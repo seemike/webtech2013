@@ -1,4 +1,4 @@
-name := "webtech"
+name := "play_basics"
 
 version := "1.0-SNAPSHOT"
 
