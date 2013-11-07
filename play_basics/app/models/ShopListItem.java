@@ -4,10 +4,10 @@ import play.data.validation.Constraints;
 
 
 public class ShopListItem {
-	@Constraints.Required
+	@Constraints.Required(message="Menge ist erforderlich")
 	public int amount;
 	
-	@Constraints.Required
+	@Constraints.Required(message="Name ist erforderlich")
 	public String name;
 	
 	@Override

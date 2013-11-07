@@ -55,7 +55,8 @@ public class ExampleController extends Controller{
 	 * @return
 	 */
 	public static Result simpletemplate(){
-		String content = "Auf dem Server ist das Datum: " +new Date();
-		return ok(views.html.example.simpletemplate.render("Beispiel", content)); 
+		String message = "Auf dem Server ist es diese Zeit";
+        Date date = new Date();
+		return ok(views.html.example.simpletemplate.render("Beispiel", message, date)); 
 	}
 }
