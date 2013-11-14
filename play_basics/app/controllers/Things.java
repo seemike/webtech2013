@@ -1,15 +1,14 @@
 package controllers;
 
-import java.util.Iterator;
-
 import models.Thing;
 
 import org.mongojack.DBCursor;
 
-import db.ThingDB;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import db.ThingDB;
 
 public class Things extends Controller {
 	/**
@@ -130,5 +129,22 @@ public class Things extends Controller {
 			flash("message", "Gespeichert");
 			return redirect(routes.Things.list());
 		}
+	}
+	
+	/**
+	 * 
+	 * @param distance max distance n meters
+	 * @param longitude
+	 * @param latitude
+	 * @return
+	 */
+	public static Result near(Integer distance, Double longitude, Double latitude) {
+		 DynamicForm searchForm = Form.form().bindFromRequest();
+		    
+		DBCursor<Thing> things = ThingDB.get().findThingsNear(longitude, latitude, distance);
+		
+		int count = things.count();
+		return ok(views.html.things.thingsnear.render("Things in der Nähe", things.iterator(),
+				count, searchForm));
 	}
 }

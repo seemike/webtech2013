@@ -2,10 +2,11 @@ package db;
 
 import java.util.Date;
 
+import models.Thing;
+
 import org.mongojack.DBCursor;
 
 import play.Logger;
-import models.Thing;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -46,6 +47,12 @@ public class ThingDB extends Finder<Thing>{
 	public DBCursor<Thing> list(int skip, int maxNum){
 		DBCursor<Thing> things = getColl().find().skip(skip).limit(maxNum);
 		return things;
+	}
+	
+	public org.mongojack.DBCursor<Thing> findThingsNear(double longitude,
+			double latitude, double distance) {
+		return findNative(q("lonLat", near(longitude, latitude, distance)));
+
 	}
 	
 }

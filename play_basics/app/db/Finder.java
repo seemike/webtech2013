@@ -34,11 +34,15 @@ public class Finder<T> {
 
 	public static BasicDBObject near(double longitude, double latitude,
 			double maxDistance) {
-		return q("$near", new double[] { longitude, latitude }).append(
+		return q(
+				"$near",
+				q("$geometry",
+						q("type", "Point").append("coordinates",
+								new double[] { longitude, latitude }))).append(
 				"$maxDistance", maxDistance);
 	}
 
-	// TODO
+	// TODO find near and return distance
 	// public static BasicDBObject geoNear(double longitude, double latitude,
 	// double maxDistance){
 	// BasicDBObject myCmd = new BasicDBObject();

@@ -34,6 +34,10 @@ POST    /userlogin						 controllers.UserLogin.login()
 # THINGS - CRUD example using forms, contraints, MongoDB, twitter bootstrap
 ##############
 
+# Things in Nähe suchen
+GET /things/near controllers.Things.near(distance: Integer ?= 2000, longitude: Double ?= 8.96, latitude: Double ?= 47.6  )  
+
+
 # Things Liste anzeigen 
 GET /things      controllers.Things.list()      
 
@@ -51,7 +55,6 @@ POST /things/:id controllers.Things.save(id: String)
 
 # Thing löschen (action=delete)
 POST /things/delete/:id controllers.Things.delete(id: String)   
-
 
 
 # Map static resources from the /public folder to the /assets URL path
