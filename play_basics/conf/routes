@@ -34,7 +34,8 @@ POST    /userlogin						 controllers.UserLogin.login()
 # THINGS - CRUD example using forms, contraints, MongoDB, twitter bootstrap
 ##############
 
-# Things in Nähe suchen
+# Things in Nähe suchen.( Vorsicht: die Default-Werte führen dazu, dass der Aufruf-URL nichts übergeben wird - also nicht inrequest parametern)
+
 GET /things/near controllers.Things.near(distance: Integer ?= 2000, longitude: Double ?= 8.96, latitude: Double ?= 47.6  )  
 
 

@@ -4,7 +4,7 @@ import models.Thing;
 
 import org.mongojack.DBCursor;
 
-import play.data.DynamicForm;
+import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -131,6 +131,7 @@ public class Things extends Controller {
 		}
 	}
 	
+	
 	/**
 	 * 
 	 * @param distance max distance n meters
@@ -139,7 +140,12 @@ public class Things extends Controller {
 	 * @return
 	 */
 	public static Result near(Integer distance, Double longitude, Double latitude) {
-		 DynamicForm searchForm = Form.form().bindFromRequest();
+		Logger.info("search near. distance:" +distance +" longitude:" +longitude +" latitude:" +latitude) ;
+
+		//NOTE: the default values are not sent with the request. I.e. they do not appear in the form
+		//when binding from request. Better to take them form the object instead reading dynamic form 
+		NearSearchParams searchParams = new NearSearchParams(distance, longitude, latitude);
+		Form<NearSearchParams> searchForm = Form.form(NearSearchParams.class).fill(searchParams);
 		    
 		DBCursor<Thing> things = ThingDB.get().findThingsNear(longitude, latitude, distance);
 		
