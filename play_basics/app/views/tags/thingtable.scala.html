@@ -29,7 +29,7 @@
               <td>@i.name</td>
               <td>
               @if(i.hasLocation()){
-<img src="https://maps.googleapis.com/maps/api/staticmap?center=@i.latitude(),@i.longitude()&zoom=8&size=150x100&sensor=false" />
+               @mapimage(i.longitude(), i.latitude())
               <br/>
                @i.longitude(), @i.latitude()
               }
