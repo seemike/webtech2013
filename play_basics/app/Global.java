@@ -2,6 +2,7 @@ import models.Thing;
 import play.Application;
 import play.GlobalSettings;
 import play.Logger;
+import db.DBConnect;
 import db.ThingDB;
 
 public class Global extends GlobalSettings {
@@ -26,6 +27,12 @@ public class Global extends GlobalSettings {
 			
 			Logger.info("Things: " + things.count());
 		}
+	}
+	
+	@Override
+	public void onStop(Application app) {
+		DBConnect.dispose();
+		super.onStop(app);
 	}
 
 }
