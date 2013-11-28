@@ -57,6 +57,9 @@ POST /things/:id controllers.Things.save(id: String)
 # Thing löschen (action=delete)
 POST /things/delete/:id controllers.Things.delete(id: String)   
 
+# maps
+GET /maps/map_sample 	controllers.Maps.sample()
+GET /maps/getlocation 	controllers.Maps.getlocation()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

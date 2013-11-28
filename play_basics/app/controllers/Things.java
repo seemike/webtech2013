@@ -17,7 +17,7 @@ public class Things extends Controller {
 	 * @return
 	 */
 	public static Result list() {
-		// things von DB lesen
+        // things von DB lesen
 		// render view
 
 		DBCursor<Thing> things = ThingDB.get().list(0, 20);

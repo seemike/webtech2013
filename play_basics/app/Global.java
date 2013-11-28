@@ -6,7 +6,6 @@ import db.DBConnect;
 import db.ThingDB;
 
 public class Global extends GlobalSettings {
-
 	/**
 	 * is executed on application start
 	 */
