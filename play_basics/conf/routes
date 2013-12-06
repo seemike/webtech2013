@@ -61,5 +61,12 @@ POST /things/delete/:id controllers.Things.delete(id: String)
 GET /maps/map_sample 	controllers.Maps.sample()
 GET /maps/getlocation 	controllers.Maps.getlocation()
 
+# websocket
+
+GET     /websocket/ 	controllers.WebSocketController.index()
+
+GET     /websocket/ws 	controllers.WebSocketController.ws()
+GET     /websocket/wsgame 	controllers.WebSocketController.wsgame()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
