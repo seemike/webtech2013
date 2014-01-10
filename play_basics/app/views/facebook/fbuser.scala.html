@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head><title>facebook pla exmaple</title></head>
+  <body>
+	<h1>facebook User Info  - Graph API</h1>
+
+<div id="fb-root"></div>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+  window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '642364099161855',
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+
+
+    // Load the SDK asynchronously
+    (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+  };
+  
+  /* get user profile using the graph API */
+	function getUserInfo() {
+	console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Good to see you, ' + response.name + '.');
+
+      $("#fb-userinfo").html("<b>Facebook User Info:</b><br/><textarea rows='20' cols='100'> "  +JSON.stringify(response) +"</textarea>");
+    });
+  }
+
+</script>
+<br/><a href="#" onclick="getUserInfo()">Get Facebook UserInfo</a>
+	<hr/>
+<div id="fb-userinfo">Facebook User Info</dov>
+  
+  </body>
+</html>
